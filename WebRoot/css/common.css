@@ -1,0 +1,33 @@
+.font1{
+	font-size: 36px;
+	font-weight: bold;
+	color: white;
+	
+}
+
+.font2{
+	font-size: 24px;
+	font-weight: bold;
+	font-color: black;
+}
+
+.font3{
+	font-size: 18px;
+	font-weight: bold;
+}
+/*定义一下常用的超链接样式*/
+/*对连接的一般处理方法*/
+a.anavi:link,a.anavi:visited,a.anavi:hover,a.anavi:active {
+	color:#C3CDDF;
+	text-decoration: none;
+}
+/*通用的lini*/
+
+a:link,a:visited,a:active {
+	color:#3B5888;
+	text-decoration: none;
+}
+a:hover{
+	color: #3B5888;
+	text-decoration: underline;
+}

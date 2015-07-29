@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.3//EN" "http://struts.apache.org/dtds/struts-config_1_3.dtd">
+
+<struts-config>
+  <form-beans >
+    <form-bean name="userForm" type="com.promasys.struts.form.UserForm" />
+
+  </form-beans>
+
+  <global-exceptions />
+  <global-forwards />
+  <action-mappings >
+    <action
+      attribute="userForm"
+      input="/WEB-INF/public/login.jsp"
+      name="userForm"
+      parameter="flag"
+      path="/register"
+      scope="request"
+      type="com.promasys.struts.action.RegisterAction"
+      validate="false"
+      cancellable="true">
+      <forward name="regUI" path="/WEB-INF/public/register.jsp" />
+      <forward name="regOk" path="/WEB-INF/public/workbench.jsp" />
+    </action>
+    <action
+      input="/WEB-INF/test/strutsTest.jsp"
+      parameter="flag"
+      path="/strutsTest"
+      type="com.promasys.struts.action.StrutsTestAction"
+      validate="false"
+      cancellable="true" >
+      <forward name="show" path="/WEB-INF/test/showCountry.jsp" />
+      
+    </action>
+    <action
+      attribute="userForm"
+      input="/WEB-INF/public/login.jsp"
+      name="userForm"
+      parameter="flag"
+      path="/login"
+      scope="request"
+      type="com.promasys.struts.action.LoginAction"
+      validate="false"
+      cancellable="true" >
+      <forward name="goHomeUI" path="/WEB-INF/public/workbench.jsp" />
+      <forward name="loginUI" path="/WEB-INF/public/login.jsp" />
+    </action>
+    <action
+      attribute="userForm"
+      input="/WEB-INF/public/workbench.jsp"
+      name="userForm"
+      parameter="flag"
+      path="/uploadDoc"
+      scope="request"
+      type="com.promasys.struts.action.UploadDocAction"
+      validate="false"
+      cancellable="true" >
+      <forward name="backToUpload" path="/WEB-INF/public/workbench.jsp" />
+    </action>
+
+
+
+  	</action-mappings>
+	<!-- 配置请求处理器，就是把action的创建交给spring容器处理 -->
+	<controller>
+		<set-property property="processorClass" value="org.springframework.web.struts.DelegatingRequestProcessor"/>
+	</controller>
+  <message-resources parameter="com.promasys.struts.ApplicationResources" />
+</struts-config>
+

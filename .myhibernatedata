@@ -1,0 +1,20 @@
+#MyEclipse Hibernate Properties
+#Tue Jul 28 11:17:58 CST 2015
+genBasicCompId=false
+sessionFactoryName=com.promasys.sessionfactory.HibernateSessionFactory
+profile=
+daoSFId=
+jndiPath=
+detectM2M=false
+reStrategyClass=
+detectO2O=false
+springDaoFile=
+useJavaTypes=true
+keyGenerator=increment
+genVersionTag=false
+sessionFactoryId=
+basePersistenceClass=
+genAnnotations=false
+reSettingsFile=
+configFile=/promasys/src/hibernate.cfg.xml
+createConfigFile=true

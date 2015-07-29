@@ -1,0 +1,76 @@
+.head{
+	margin: 0 auto;
+	width: 1000px;
+	height: 100px;
+	/*background-color: pink;*/
+	text-align: center;
+	/*line-height: 30px;*/
+	margin-top: 30px;
+}
+
+.regForm{
+	width: 1000px;
+	height: 600px;
+	/*background-color: #87B0DF;*/
+	margin: 0 auto;
+	border-style: solid solid solid solid;
+}
+
+.formLeft{
+	width: 580px;
+	height: 570px;
+	margin-left: 15px;
+	margin-top: 15px;
+	float: left;
+	/*background-color: #DEEBF1;*/
+	border-style: none solid none none;
+}
+
+.formleft table{
+	margin-top: 30px;
+	line-height: 40px;
+}
+
+/*对注册表格的外观进行修饰*/
+.tb1{
+	width: 110px;
+	text-align: right;
+	font-size: 12px;
+	font-weight: bold;
+	color: #808080;
+	padding-right: 10px;/*右填充*/
+}
+
+.tb2{
+	width: 280px;
+}
+
+.inputStyle{
+	width: 250px;
+}
+
+.formRight{
+	width: 200px;
+	height: 570px;
+	margin-left: 50px;
+	margin-top: 15px;
+	float: left;
+	/*background-color: #DEEBF1;*/
+}
+
+.submitStyle{
+	width: 100px;
+	height: 40px;
+	background-color: #5A9DF6;
+}
+
+/*学校选择控件*/
+.divSch {
+	background-color: white;
+	border-style: solid;
+	position: absolute;
+	top: 150;
+	left: 1000;
+	border-color: #D8DFEA;
+	border-width: 12px;
+}

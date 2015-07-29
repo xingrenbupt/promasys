@@ -1,0 +1,27 @@
+.head{
+	width: 100%;
+	height: 70px;
+	background-color: #484848;
+	margin: 0 auto;
+}
+
+.head1{
+	width: 100%;
+	height: 30px;
+	background-color: #8497BF;
+	margin: 0 auto;
+}
+
+.lianjie{
+	float: right;
+	list-style: none;
+	margin-top: 10px;
+}
+
+.lianjie li{
+	float: left;
+	line-high: 10px;
+	text-align: center;
+	height: 18px;
+	width: 50px;
+}

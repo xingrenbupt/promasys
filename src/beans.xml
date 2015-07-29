@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+		xsi:schemaLocation="http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+		http://www.springframework.org/schema/context
+		http://www.springframework.org/schema/context/spring-context-2.5.xsd
+		http://www.springframework.org/schema/aop 
+		http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+		http://www.springframework.org/schema/tx 
+		http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
+	<context:annotation-config/>
+		
+	<!-- 配置databaseSource -->
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+    	<property name="driverClassName" value="org.gjt.mm.mysql.Driver"/>
+    	<!-- 由于数据库的编码为gbk，因此此处与之相同 -->
+    	<property name="url" value="jdbc:mysql://localhost:3306/promasys1?useUnicode=true&amp;characterEncoding=gbk"/>
+    	<property name="username" value="root"/>
+    	<property name="password" value="520924ns"/>
+    	<!-- 连接池启动时的初始值 -->
+    	<property name="initialSize" value="3"/>
+    	<!-- 连接池的最大值 -->
+    	<property name="maxActive" value="500"/>
+    	<!-- 最大空闲值，当经过一个高峰时间后，连接池可以慢慢将已经用不到的连接慢慢释放 -->
+    	<property name="maxIdle" value="2"/>
+    	<!-- 最小空闲值，当空闲的连接数少于阈值是，连接池就会预申请去一些连接，以免洪 -->
+    	<property name="minIdle" value="1"/>
+    </bean>
+    
+    <!-- 配置sessionFactory -->
+	<bean id="sessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+    	<property name="dataSource" ref="dataSource"/>
+    	<property name="mappingResources">
+    		<list>
+    			<value>com/promasys/domain/Country.hbm.xml</value>
+    			<value>com/promasys/domain/Province.hbm.xml</value>
+    			<value>com/promasys/domain/University.hbm.xml</value>
+    			<value>com/promasys/domain/Users.hbm.xml</value>
+    			<value>com/promasys/domain/Prodoclist.hbm.xml</value>
+    		</list>
+    	</property>
+    	<property name="hibernateProperties">
+    		<value>
+    			hibernate.dialect=org.hibernate.dialect.MySQLDialect
+    			hibernate.hbm2ddl.auto=update
+    			hibernate.show_sql=false
+    			hibernate.format_sql=false
+    		</value>
+    	</property>
+    </bean>
+    
+    <!-- 配置service对象 -->
+    <bean id="testService" class="com.promasys.service.TestService">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	<bean id="countryServiceImpl" class="com.promasys.service.impl.CountryServiceImpl">
+		<!-- 无需再注入sessionfactory 已被父类自动注入-->	
+	</bean>
+	<bean id="provinceServiceImpl" class="com.promasys.service.impl.ProvinceServiceImpl">
+		<!-- 无需再注入sessionfactory 已被父类自动注入-->
+	</bean>
+	<bean id="universityServiceImpl" class="com.promasys.service.impl.UniversityServiceImpl">
+		<!-- 无需再注入sessionfactory 已被父类自动注入-->
+	</bean>
+	<bean id="userServiceImpl" class="com.promasys.service.impl.UserServiceImpl">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	<bean id="docServiceImpl" class="com.promasys.service.impl.DocServiceImpl">
+		<!-- 无需再注入sessionfactory 已被父类自动注入-->
+	</bean>
+	
+	<!-- 配置action -->
+	<bean name="/register" class="com.promasys.struts.action.RegisterAction">
+		<property name="countryService" ref="countryServiceImpl"/>
+		<property name="provinceService" ref="provinceServiceImpl"/>
+		<property name="universityService" ref="universityServiceImpl"/>
+		<property name="userService" ref="userServiceImpl"/>
+	</bean>
+	<bean name="/strutsTest" class="com.promasys.struts.action.StrutsTestAction">
+	<!-- 给该action注入一个service -->
+		<property name="testService" ref="testService"/>
+	</bean>
+	<bean name="/login" class="com.promasys.struts.action.LoginAction">
+		<property name="userService" ref="userServiceImpl"/>
+		<property name="docService" ref="docServiceImpl"/>
+	</bean>
+	<bean name="/uploadDoc" class="com.promasys.struts.action.UploadDocAction">
+		<property name="docService" ref="docServiceImpl"/>
+		<property name="userService" ref="userServiceImpl"></property>
+	</bean>
+	
+	<!-- 配置事务管理 -->
+	<bean id="txManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	<tx:annotation-driven transaction-manager="txManager"/>
+</beans>

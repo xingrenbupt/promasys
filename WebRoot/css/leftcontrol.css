@@ -1,0 +1,44 @@
+.controlpanel{
+	height: 800px;
+	width: 10%;
+	background-color: #EAEAEA;
+	float: left;
+}
+
+.proHome{
+	height: 60px;
+	width: 100%;
+	/*background-color: pink;*/
+	float: left;
+	text-align: center;
+	border-bottom: 1px solid grey;
+	line-height: 60px;
+}
+
+.proCSS{
+	height: 40px;
+	width: 100%;
+	float: left;
+	text-align: center;
+	border-bottom: 1px solid grey;
+	line-height: 40px;
+}
+
+.userHome{
+	height: 60px;
+	width: 100%;
+	/*background-color: pink;*/
+	float: left;
+	text-align: center;
+	border-bottom: 1px solid grey;
+	line-height: 60px;
+}
+
+.userCSS{
+	height: 40px;
+	width: 100%;
+	float: left;
+	text-align: center;
+	border-bottom: 1px solid grey;
+	line-height: 40px;
+}
