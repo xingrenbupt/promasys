@@ -93,6 +93,53 @@
 		<property name="userService" ref="userServiceImpl"></property>
 	</bean>
 	
+	<!-- email相关类 -->
+	<bean id="email" class="com.promasys.email.Email"></bean>
+	<bean id="fromMail" class="com.promasys.email.FromMail"></bean>
+	<bean id="toMail" class="com.promasys.email.ToMail"></bean>
+	<bean id="contentMail" class="com.promasys.email.ContentMail"></bean>
+	
+	<!-- 注入发送邮件类 -->
+	<bean id="emailTask" class="com.promasys.quartz.EmailTask">
+		<property name="email" ref="email"></property>
+		<property name="fromMail" ref="fromMail"></property>
+		<property name="toMail" ref="toMail"></property>
+		<property name="contentMail" ref="contentMail"></property>
+		<property name="userService" ref="userServiceImpl"></property>
+	</bean>
+	
+	<!-- bean触发方法配置 -->
+	<bean name="quartzBean" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<!-- bean名字 -->
+		<property name="targetObject" ref="emailTask"/><!-- 目标对象 -->
+		<!-- bean方法 -->
+		<property name="targetMethod"><!-- 目标方法 -->
+			<value>sendEmail</value>
+		</property>
+		<property name="concurrent"><!-- 配置为false不允许任务并发执行 -->
+			<value>false</value>
+		</property>
+	</bean>
+	
+	<!-- bean触发时间配置，指定具体的时间执行 -->
+	<bean id="quartzTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<!-- 触发bean配置 -->
+		<property name="jobDetail" ref="quartzBean"></property>
+		<!-- 触发时间配置 -->
+		<property name="cronExpression">
+			<value>0 30 9 * * ?</value><!-- 每天9点30触发一次 -->
+		</property>
+	</bean>
+	
+	<!-- 调度器 -->
+	<bean class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+		<property name="triggers">
+			<list>
+				<ref bean="quartzTrigger"/>
+			</list>
+		</property>
+	</bean>
+	
 	<!-- 配置事务管理 -->
 	<bean id="txManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
 		<property name="sessionFactory" ref="sessionFactory"/>
