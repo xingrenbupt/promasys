@@ -41,6 +41,8 @@
     			<value>com/promasys/domain/University.hbm.xml</value>
     			<value>com/promasys/domain/Users.hbm.xml</value>
     			<value>com/promasys/domain/Prodoclist.hbm.xml</value>
+    			<value>com/promasys/domain/Posts.hbm.xml</value>
+    			<value>com/promasys/domain/Reply.hbm.xml</value>
     		</list>
     	</property>
     	<property name="hibernateProperties">
@@ -57,21 +59,13 @@
     <bean id="testService" class="com.promasys.service.TestService">
 		<property name="sessionFactory" ref="sessionFactory"/>
 	</bean>
-	<bean id="countryServiceImpl" class="com.promasys.service.impl.CountryServiceImpl">
-		<!-- 无需再注入sessionfactory 已被父类自动注入-->	
-	</bean>
-	<bean id="provinceServiceImpl" class="com.promasys.service.impl.ProvinceServiceImpl">
-		<!-- 无需再注入sessionfactory 已被父类自动注入-->
-	</bean>
-	<bean id="universityServiceImpl" class="com.promasys.service.impl.UniversityServiceImpl">
-		<!-- 无需再注入sessionfactory 已被父类自动注入-->
-	</bean>
-	<bean id="userServiceImpl" class="com.promasys.service.impl.UserServiceImpl">
-		<property name="sessionFactory" ref="sessionFactory"/>
-	</bean>
-	<bean id="docServiceImpl" class="com.promasys.service.impl.DocServiceImpl">
-		<!-- 无需再注入sessionfactory 已被父类自动注入-->
-	</bean>
+	<bean id="countryServiceImpl" class="com.promasys.service.impl.CountryServiceImpl"></bean>
+	<bean id="provinceServiceImpl" class="com.promasys.service.impl.ProvinceServiceImpl"></bean>
+	<bean id="universityServiceImpl" class="com.promasys.service.impl.UniversityServiceImpl"></bean>
+	<bean id="userServiceImpl" class="com.promasys.service.impl.UserServiceImpl"></bean>
+	<bean id="docServiceImpl" class="com.promasys.service.impl.DocServiceImpl"></bean>
+	<bean id="postsServiceImpl" class="com.promasys.service.impl.PostsServiceImpl"></bean>
+	<bean id="replyServiceImpl" class="com.promasys.service.impl.ReplyServiceImpl"></bean>
 	
 	<!-- 配置action -->
 	<bean name="/register" class="com.promasys.struts.action.RegisterAction">
@@ -91,6 +85,16 @@
 	<bean name="/uploadDoc" class="com.promasys.struts.action.UploadDocAction">
 		<property name="docService" ref="docServiceImpl"/>
 		<property name="userService" ref="userServiceImpl"></property>
+	</bean>
+	<bean name="/forum" class="com.promasys.struts.action.ForumAction">	
+		<property name="postsService" ref="postsServiceImpl"></property>
+	</bean>
+	<bean name="/posting" class="com.promasys.struts.action.PostingAction">
+		<property name="postsService" ref="postsServiceImpl"></property>
+	</bean>
+	<bean name="/reply" class="com.promasys.struts.action.ReplyAction">
+		<property name="replyService" ref="replyServiceImpl"></property>
+		<property name="postsService" ref="postsServiceImpl"></property>
 	</bean>
 	
 	<!-- email相关类 -->

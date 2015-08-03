@@ -34,7 +34,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<a id="docman" class="font3" href="javascript:void(0);" onclick='changeUI(this)'>文件管理</a>
 		</div>
 		<div class="proCSS">
-			<a id="" class="font3" href="javascript:void(0);" onclick='changeUI(this)'>讨论区</a>
+			<a id="" class="font3" href="/promasys/forum.do?flag=ForumUI">讨论区</a>
 		</div>
 		<div class="proCSS">
 			<a id="" class="font3" href="javascript:void(0);" onclick='changeUI(this)'>通知区</a>

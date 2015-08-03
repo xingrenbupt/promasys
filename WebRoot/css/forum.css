@@ -1,0 +1,36 @@
+
+.topic_frame{
+	width: 90%;
+	height: 70%;
+	background-color: white;
+	margin-top: 5%;
+	margin-left: 3%;
+	float: left;
+}
+
+.posting_frame{
+	width: 90%;
+	height: 70%;
+	background-color: white;
+	margin-top: 5%;
+	margin-left: 3%;
+	float: left;
+}
+
+.editor_frame{
+	width: 60%;
+	height: 70%;
+	/*background-color: green;*/
+	margin-top: 10px;
+	margin-left: 20px;
+	float: left;
+}
+
+.reply_frame{
+	width: 90%;
+	height: 70%;
+	background-color: white;
+	margin-top: 5%;
+	margin-left: 3%;
+	float: left;
+}

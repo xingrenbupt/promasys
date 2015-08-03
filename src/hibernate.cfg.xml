@@ -25,6 +25,8 @@
 		<mapping resource="com/promasys/domain/University.hbm.xml" />
 		<mapping resource="com/promasys/domain/Users.hbm.xml" />
 		<mapping resource="com/promasys/domain/Prodoclist.hbm.xml" />
+		<mapping resource="com/promasys/domain/Posts.hbm.xml" />
+		<mapping resource="com/promasys/domain/Reply.hbm.xml" />
 
 	</session-factory>
 

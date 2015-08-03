@@ -4,6 +4,8 @@
 <struts-config>
   <form-beans >
     <form-bean name="userForm" type="com.promasys.struts.form.UserForm" />
+    <form-bean name="forumForm" type="com.promasys.struts.form.ForumForm" />
+    <form-bean name="replyForm" type="com.promasys.struts.form.ReplyForm" />
 
   </form-beans>
 
@@ -58,6 +60,44 @@
       cancellable="true" >
       <forward name="backToUpload" path="/WEB-INF/public/workbench.jsp" />
     </action>
+    <action
+      input="/WEB-INF/public/workbench.jsp"
+      parameter="flag"
+      path="/forum"
+      type="com.promasys.struts.action.ForumAction"
+      validate="false"
+      cancellable="true">
+      <forward name="goForumUI" path="/WEB-INF/public/Forum.jsp" />
+    </action>
+    <action
+      attribute="forumForm"
+      input="/WEB-INF/public/Posting.jsp"
+      name="forumForm"
+      parameter="flag"
+      path="/posting"
+      scope="request"
+      type="com.promasys.struts.action.PostingAction"
+      validate="false"
+      cancellable="true">
+      <forward name="goPostingUI" path="/WEB-INF/public/Posting.jsp" />
+      <forward name="goForumUI" path="/WEB-INF/public/Forum.jsp" />
+    </action>
+    <action
+      attribute="replyForm"
+      input="/WEB-INF/public/Forum.jsp"
+      name="replyForm"
+      parameter="flag"
+      path="/reply"
+      scope="request"
+      type="com.promasys.struts.action.ReplyAction"
+      validate="false"
+      cancellable="true">
+      <forward name="goReplyUI" path="/WEB-INF/public/reply.jsp" />
+      <forward name="goForumUI" path="/WEB-INF/public/Forum.jsp" />
+    </action>
+
+
+
 
 
 
