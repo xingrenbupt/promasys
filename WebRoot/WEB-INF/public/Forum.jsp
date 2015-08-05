@@ -23,7 +23,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<script type="text/javascript" src="/promasys/js/jquery-1.3.1.js"></script>
 	<script type="text/javascript" src="/promasys/js/publicJs.js"></script>
 	<script type="text/javascript" src="/promasys/myAJAX/ajax_uni.js"></script>
-
+	<!-- 
 	<script type="text/javascript">
 	$(function(){
 		$d = $("#editor")[0].contentWindow.document;//IE\FF∂ººÊ»›
@@ -46,6 +46,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		});
 	})
 	</script>
+	 -->
   </head>
   
   <body>
@@ -76,6 +77,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	<div class="">
     		
     	</div>
+    	<!-- 
     	<div class="editor_frame" style="display:none;">
     		<iframe id="editor" width="100%" height="45%" style="border:solid 1px;"></iframe>
     		<input type="text" id="path" value="http://www.divcss5.com/uploads/allimg/130125/1_130125220259_1.png"/>
@@ -85,7 +87,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     		
     		<p style="border:1px dashed #ccc;" id="preview_area"></p>
     	</div>
+    	 -->
     </div>
-    
   </body>
 </html>

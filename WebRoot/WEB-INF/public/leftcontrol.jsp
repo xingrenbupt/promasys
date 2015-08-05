@@ -25,43 +25,29 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <body>
 	<div class="controlpanel">
 		<div class="proHome">
-			<a id="prohome" class="font2" href="javascript:void(0);" onclick='changeUI(this)'>项目主页</a>
+			<a id="" class="font2" href="/promasys/home.do?flag=ProHome">项目主页</a>
 		</div>
 		<div class="proCSS">
-			<a id="crewman" class="font3" href="javascript:void(0);" onclick='changeUI(this)'>人员管理</a>
+			<a id="" class="font3" href="/promasys/staff.do?flag=StaffUI">项目人员</a>
 		</div>
 		<div class="proCSS">
-			<a id="docman" class="font3" href="javascript:void(0);" onclick='changeUI(this)'>文件管理</a>
+			<a id="" class="font3" href="/promasys/proDoc.do?flag=DocUI">项目文件</a>
 		</div>
 		<div class="proCSS">
-			<a id="" class="font3" href="/promasys/forum.do?flag=ForumUI">讨论区</a>
+			<a id="" class="font3" href="/promasys/forum.do?flag=ForumUI">讨论管理</a>
 		</div>
 		<div class="proCSS">
-			<a id="" class="font3" href="javascript:void(0);" onclick='changeUI(this)'>通知区</a>
+			<a id="" class="font3" href="/promasys/inform.do?flag=InformUI">通知管理</a>
 		</div>
 		<div class="userHome">
-			<a id="userhome" class="font2" href="javascript:void(0);" onclick='changeUI(this)'>个人主页</a>
+			<a id="" class="font2" href="/promasys/home.do?flag=UserHome">个人主页</a>
 		</div>
 		<div class="userCSS">
-			<a id="info" class="font3" href="javascript:void(0);" onclick='changeUI(this)' >用户管理</a>
+			<a id="" class="font3" href="/promasys/staff.do?flag=UserModifyUI">修改信息</a>
 		</div>
 		<div class="userCSS">
-			<a id="upload" class="font3" href="javascript:void(0);" onclick='changeUI(this)'>文件管理</a>
+			<a id="" class="font3" href="/promasys/proDoc.do?flag=uploadDocUI">上传文件</a>
 		</div>
-		<!-- 
-		<div class="document">
-			<span class="font2">文件管理</span>
-		</div>
-		<div class="uploadDoc">
-			<a id="upload" class="font3" href="javascript:void(0);" onclick='changeUI(this)'>上传文件</a>
-		</div>
-		<div class="forum">
-			<span class="font2">讨论区</span>
-		</div>
-		<div class="notification">
-			<span class="font2">通知管理</span>
-		</div>
-		 -->
 	</div>
   </body>
 </html>

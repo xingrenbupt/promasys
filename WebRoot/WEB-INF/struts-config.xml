@@ -6,6 +6,7 @@
     <form-bean name="userForm" type="com.promasys.struts.form.UserForm" />
     <form-bean name="forumForm" type="com.promasys.struts.form.ForumForm" />
     <form-bean name="replyForm" type="com.promasys.struts.form.ReplyForm" />
+    <form-bean name="meetingForm" type="com.promasys.struts.form.MeetingForm" />
 
   </form-beans>
 
@@ -50,15 +51,18 @@
     </action>
     <action
       attribute="userForm"
-      input="/WEB-INF/public/workbench.jsp"
+      input="/WEB-INF/public/uploadDoc.jsp"
       name="userForm"
       parameter="flag"
-      path="/uploadDoc"
+      path="/proDoc"
       scope="request"
-      type="com.promasys.struts.action.UploadDocAction"
+      type="com.promasys.struts.action.ProDocAction"
       validate="false"
-      cancellable="true" >
-      <forward name="backToUpload" path="/WEB-INF/public/workbench.jsp" />
+      cancellable="true">
+      <forward name="goUploadUI" path="/WEB-INF/public/uploadDoc.jsp" />
+      <forward name="goUserHome" path="/WEB-INF/public/userHome.jsp" />
+      <forward name="goDocUI" path="/WEB-INF/public/proDoc.jsp" />
+      <forward name="goProHome" path="/WEB-INF/public/workbench.jsp" />
     </action>
     <action
       input="/WEB-INF/public/workbench.jsp"
@@ -95,6 +99,42 @@
       <forward name="goReplyUI" path="/WEB-INF/public/reply.jsp" />
       <forward name="goForumUI" path="/WEB-INF/public/Forum.jsp" />
     </action>
+    <action
+      input="/WEB-INF/public/workbench.jsp"
+      parameter="flag"
+      path="/home"
+      type="com.promasys.struts.action.HomeAction"
+      validate="false"
+      cancellable="true" >
+      <forward name="goHomeUI" path="/WEB-INF/public/workbench.jsp" />
+      <forward name="goUserHome" path="/WEB-INF/public/userHome.jsp" />
+    </action>
+    <action
+      attribute="meetingForm"
+      input="/WEB-INF/public/inform.jsp"
+      name="meetingForm"
+      parameter="flag"
+      path="/inform"
+      scope="request"
+      type="com.promasys.struts.action.InformAction"
+      validate="false"
+      cancellable="true">
+      <forward name="goInformUI" path="/WEB-INF/public/inform.jsp" />
+      <forward name="goHomeUI" path="/WEB-INF/public/workbench.jsp" />
+    </action>
+    <action
+      input="/WEB-INF/public/workbench.jsp"
+      parameter="flag"
+      path="/staff"
+      type="com.promasys.struts.action.StaffAction"
+      validate="false"
+      cancellable="true" >
+      <forward name="goStaffUI" path="/WEB-INF/public/staff.jsp" />
+      <forward name="goModifyUI" path="/WEB-INF/public/userModify.jsp" />
+    </action>
+
+
+
 
 
 

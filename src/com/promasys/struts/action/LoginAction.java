@@ -4,7 +4,11 @@
  */
 package com.promasys.struts.action;
 
+import java.net.InetAddress;
+import java.net.UnknownHostException;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -13,9 +17,12 @@ import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 import org.apache.struts.actions.DispatchAction;
+import org.hibernate.mapping.Array;
 
 import com.promasys.service.inter.DocServiceInter;
+import com.promasys.service.inter.MeetingServiceInter;
 import com.promasys.service.inter.UserServiceInter;
+import com.promasys.domain.Prodoclist;
 import com.promasys.domain.Users;
 import com.promasys.struts.form.UserForm;
 
@@ -23,7 +30,15 @@ public class LoginAction extends DispatchAction {
 
 	private UserServiceInter userService;
 	private DocServiceInter docService;
-	
+	private MeetingServiceInter meetingService;
+
+	public MeetingServiceInter getMeetingService() {
+		return meetingService;
+	}
+
+	public void setMeetingService(MeetingServiceInter meetingService) {
+		this.meetingService = meetingService;
+	}
 
 	public DocServiceInter getDocService() {
 		return docService;
@@ -42,7 +57,7 @@ public class LoginAction extends DispatchAction {
 	}
 
 	public ActionForward login(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response) {
+			HttpServletRequest request, HttpServletResponse response) throws UnknownHostException {
 		UserForm userForm = (UserForm) form;
 //		return mapping.findForward("goHomeUI");
 		Users user = new Users();
@@ -59,8 +74,13 @@ public class LoginAction extends DispatchAction {
 //			System.out.println(user.getLoginDate());
 			userService.update(user);
 			request.getSession().setAttribute("loginuser", user);
-			request.setAttribute("prodoclist", docService.getResult("from Prodoclist", null));
-			request.setAttribute("crewlist", userService.getResult("from Users", null));
+			request.setAttribute("docNum", docService.getResult("from Prodoclist", null).size());
+			request.setAttribute("stafflist", userService.getResult("from Users", null));
+			request.setAttribute("loginAddress", InetAddress.getLocalHost().getHostAddress());
+			if(meetingService.getResult("from Meeting", null).size()!=0){
+				request.getSession().setAttribute("meeting", meetingService.getResult("from Meeting", null).get(0));
+			}
+			
 			return mapping.findForward("goHomeUI");
 		}else{
 			//用户不合法

@@ -41,24 +41,13 @@ public class ReplyAction extends DispatchAction {
 	//点击主题列表后
 	public ActionForward replyUI(ActionMapping mapping, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response) {
-		//获得当前用户
-		Users loginuser = (Users) request.getSession().getAttribute("loginuser");
-		List<Posts> postslist = new ArrayList<Posts>();
-		postslist = postsService.getResult("from Posts where id=?", new Object[]{new Integer(request.getParameter("topicId"))});
-//		System.out.println(request.getParameter("topicId"));
-		request.setAttribute("postsName", postslist.get(0).getName());
-		request.setAttribute("postsContext", postslist.get(0).getContent());
-		request.setAttribute("postsTopic", postslist.get(0).getName());
-		request.setAttribute("postsUser", postslist.get(0).getUsers().getName());
-		request.setAttribute("postsUserId", postslist.get(0).getUsers().getId());
-		request.setAttribute("postsUserPhoto", postslist.get(0).getUsers().getPhoto());
-		request.setAttribute("loginUser", loginuser.getName());
-		request.setAttribute("loginUserId", loginuser.getId());
-		request.setAttribute("loginUserPhoto", loginuser.getPhoto());		
-		request.getSession().setAttribute("posts", postslist.get(0));
-		
+
+		request.getSession().setAttribute("posts", postsService.getResult("from Posts where id=?", 
+				new Object[]{new Integer(request.getParameter("topicId"))}).get(0));
+
 		request.setAttribute("replylist", replyService.getResult("from Reply where posts.id=?", 
 				new Object[]{new Integer(request.getParameter("topicId"))}));
+		
 		return mapping.findForward("goReplyUI");
 	}
 	
@@ -79,6 +68,10 @@ public class ReplyAction extends DispatchAction {
 		reply.setReplyTime(new java.util.Date());
 		
 		replyService.save(reply);
+		
+		posts.setReplyNum(posts.getReplyNum()+1);
+		postsService.update(posts);
+		
 		return mapping.findForward("goReplyUI");
 	}
 }

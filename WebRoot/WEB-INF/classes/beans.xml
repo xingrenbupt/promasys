@@ -43,6 +43,7 @@
     			<value>com/promasys/domain/Prodoclist.hbm.xml</value>
     			<value>com/promasys/domain/Posts.hbm.xml</value>
     			<value>com/promasys/domain/Reply.hbm.xml</value>
+    			<value>com/promasys/domain/Meeting.hbm.xml</value>
     		</list>
     	</property>
     	<property name="hibernateProperties">
@@ -66,6 +67,7 @@
 	<bean id="docServiceImpl" class="com.promasys.service.impl.DocServiceImpl"></bean>
 	<bean id="postsServiceImpl" class="com.promasys.service.impl.PostsServiceImpl"></bean>
 	<bean id="replyServiceImpl" class="com.promasys.service.impl.ReplyServiceImpl"></bean>
+	<bean id="meetingServiceImpl" class="com.promasys.service.impl.MeetingServiceImpl"></bean>
 	
 	<!-- 配置action -->
 	<bean name="/register" class="com.promasys.struts.action.RegisterAction">
@@ -81,9 +83,11 @@
 	<bean name="/login" class="com.promasys.struts.action.LoginAction">
 		<property name="userService" ref="userServiceImpl"/>
 		<property name="docService" ref="docServiceImpl"/>
+		<property name="meetingService" ref="meetingServiceImpl"></property>
 	</bean>
-	<bean name="/uploadDoc" class="com.promasys.struts.action.UploadDocAction">
+	<bean name="/proDoc" class="com.promasys.struts.action.ProDocAction">
 		<property name="docService" ref="docServiceImpl"/>
+		<property name="postsService" ref="postsServiceImpl"/>
 		<property name="userService" ref="userServiceImpl"></property>
 	</bean>
 	<bean name="/forum" class="com.promasys.struts.action.ForumAction">	
@@ -95,6 +99,17 @@
 	<bean name="/reply" class="com.promasys.struts.action.ReplyAction">
 		<property name="replyService" ref="replyServiceImpl"></property>
 		<property name="postsService" ref="postsServiceImpl"></property>
+	</bean>
+	<bean name="/home" class="com.promasys.struts.action.HomeAction">
+		<property name="docService" ref="docServiceImpl"/>
+		<property name="userService" ref="userServiceImpl"/>
+		<property name="postsService" ref="postsServiceImpl"></property>
+	</bean>
+	<bean name="/inform" class="com.promasys.struts.action.InformAction">
+		<property name="meetingService" ref="meetingServiceImpl"></property>
+	</bean>
+	<bean name="/staff" class="com.promasys.struts.action.StaffAction">
+		<property name="userService" ref="userServiceImpl"/>
 	</bean>
 	
 	<!-- email相关类 -->

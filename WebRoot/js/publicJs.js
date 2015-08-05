@@ -18,48 +18,10 @@ function changeStatus(obj){
 	}
 };
 
-function changeUI1(obj){
-//	window.alert(obj.id);
-	if(obj.id=="info"){
-		$(".frame1").css("display","none");
-		$(".frame2").css("display","none");
-		$(".UserInfoUI").css("display","block");
-		$(".UploadDocUI").css("display","none");
-		$(".docManUI").css("display","none");
-		$(".docManUI").css("display","none");
-	}else if(obj.id=="upload"){
-		$(".frame1").css("display","none");
-		$(".frame2").css("display","none");
-		$(".UploadDocUI").css("display","block");
-		$(".UserInfoUI").css("display","none");
-		$(".docManUI").css("display","none");
-	}else if(obj.id=="prohome"){
-		$(".UploadDocUI").css("display","none");
-		$(".UserInfoUI").css("display","none");
-		$(".frame1").css("display","block");
-		$(".frame2").css("display","block");
-		$(".docManUI").css("display","none");
-	}else if(obj.id=="docman"){
-		$(".UploadDocUI").css("display","none");
-		$(".UserInfoUI").css("display","none");
-		$(".frame1").css("display","none");
-		$(".frame2").css("display","none");
-		$(".docManUI").css("display","block");
-	}else if(obj.id=="crewman"){
-		$(".UploadDocUI").css("display","none");
-		$(".UserInfoUI").css("display","none");
-		$(".frame1").css("display","none");
-		$(".frame2").css("display","none");
-		$(".docManUI").css("display","none");
-		$(".crewManUI").css("display","block");
-	}
-	
-}
-
 function changeUI(obj){
 //	window.alert(obj.id);
 	$(".UploadDocUI").css("display","none");
-	$(".UserInfoUI").css("display","none");
+	$(".AlterInfoUI").css("display","none");
 	$(".frame1").css("display","none");
 	$(".frame2").css("display","none");
 	$(".docManUI").css("display","none");
@@ -67,7 +29,7 @@ function changeUI(obj){
 	$(".UserHomeUI").css("display","none");
 	
 	if(obj.id=="info"){
-		$(".UserInfoUI").css("display","block");
+		$(".AlterInfoUI").css("display","block");
 	}else if(obj.id=="upload"){
 		$(".UploadDocUI").css("display","block");
 	}else if(obj.id=="prohome"){
@@ -77,9 +39,8 @@ function changeUI(obj){
 		$(".docManUI").css("display","block");
 	}else if(obj.id=="crewman"){
 		$(".crewManUI").css("display","block");
-	}else if(obj.id=="home"){
-		$(".frame1").css("display","block");
-		$(".frame2").css("display","block");
+//	}else if(obj.id=="inform"){
+//		$(".informUI").css("display","block");
 	}else if(obj.id=="userhome"){
 		$(".UserHomeUI").css("display","block");
 	}

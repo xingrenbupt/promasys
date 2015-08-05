@@ -7,7 +7,7 @@
 }
 
 .frame1{
-	height: 200px;
+	height: 160px;
 	width: 100%;
 	background-color: white;
 	float: right;
@@ -15,11 +15,10 @@
 }
 
 .frame2{
-	height: 597px;
+	height: 640px;
 	width: 100%;
-	background-color: #55C9CE;
+	background-color: white;
 	float: right;
-	margin-top: 3px;
 }
 
 .userInfoTable{
@@ -65,11 +64,22 @@
 }
 
 .statisticsTable table{
-	width:600px;
-	height:90px;
+	width: 600px;
+	height:45px;
 }
 
-.actorList{
+.staffList{
+	margin-left: 10px;
+	margin-top: 10px;
+	float: left;
+	border-style: solid solid solid solid;
+	border-width: thin;
+	border-color: #B4D3EF;
+	height: 138px;
+}
+
+
+.meeting{
 	margin-left: 10px;
 	margin-top: 10px;
 	float: left;
@@ -78,9 +88,23 @@
 	border-color: #B4D3EF;
 }
 
-.actorList table{
-	width:400px;
-	height:60px;
+.meeting table{
+	width:600px;
+	height:45px;
+}
+
+.introduction{
+	width: 98%;
+	height: 95%;
+	margin-left: 10px;	
+	border-style: solid solid solid solid;
+	border-width: thin;
+	border-color: black;
+}
+
+.introduction table{
+	width: 100%;
+	height: 100%
 }
 
 .timeShaft{
@@ -92,111 +116,6 @@
 	float: left;
 }
 
-.documentList{	
-	margin-left: 10px;
-	margin-top: 10px;
-	background-color: #C6D6EC;
-	float: left;
-}
 
-.documentList table{
-	width: 600px;
-	height: 580px;
-}
 
-.UserInfoUI{
-	width: 100%;
-	height: 100%;
-	background-color: #C1A9A9;
-	display: none;
-	float: left;
-}
 
-.UploadHeadFrame{
-	width: 50%;
-	height: 50%;
-	background-color: #26B5D7;
-	margin-top: 5%;
-	margin-left: 5%;
-	float: left;
-}
-.UploadDocUI{
-	width: 100%;
-	height: 100%;
-	background-color: #C1A9A9;
-	display: none;
-	float: left;
-}
-
-.UploadDocFrame{
-	width: 94%;
-	height: 70%;
-	background-color: #26B5D7;
-	margin-top: 3%;
-	margin-left: 2%;
-	float: left;
-}
-
-.uploadListFrame{
-	width: 90%;
-	height: 50%;
-	background-color: white;
-	margin-top: 3%;
-	margin-left: 2%;
-	float: left;
-}
-
-.uploadList{
-	width: 100%;
-	height: 78%;
-	float: left;
-	background-color: #F5F5F5;
-}
-
-.docManUI{
-	width: 100%;
-	height: 100%;
-	background-color: #91BDE9;
-	display: none;
-	float: left;
-}
-
-.docList{
-	width: 50%;
-	height: 50%;
-	background-color: #BDDAEF;
-	float: left;
-	margin-left: 2%;
-	margin-top: 2%;
-	border-style: solid solid solid solid;
-	border-width: thin;
-	border-color: #B4D3EF;
-}
-
-.crewManUI{
-	width: 100%;
-	height: 100%;
-	background-color: #91BDE9;
-	display: none;
-	float: left;
-}
-
-.crewList{
-	width: 50%;
-	height: 50%;
-	background-color: #BDDAEF;
-	float: left;
-	margin-left: 2%;
-	margin-top: 2%;
-	border-style: solid solid solid solid;
-	border-width: thin;
-	border-color: #B4D3EF;
-}
-
-.UserHomeUI{
-	width: 100%;
-	height: 100%;
-	background-color: #91BDE9;
-	display: none;
-	float: left;
-}

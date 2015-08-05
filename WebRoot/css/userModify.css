@@ -1,0 +1,29 @@
+.main_frame{
+	background-color: pink;	
+	height: 800px;
+	width: 90%;
+	float: left;
+}
+
+.ModifyUI{
+	width: 100%;
+	height: 100%;
+	background-color: #91BDE9;
+	float: left;
+}
+
+.ModifyFrame{
+	width: 50%;
+	height: 70%;
+	background-color: white;
+	margin-top: 3%;
+	margin-left: 2%;
+	float: left;
+}
+
+.ModifyFrame table{
+	width: 100%;
+	border-style: solid solid solid solid;
+	border-width: thin;
+	border-color: #B4D3EF;
+}

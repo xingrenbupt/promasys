@@ -1,0 +1,38 @@
+.main_frame{
+	background-color: pink;	
+	height: 800px;
+	width: 90%;
+	float: left;
+}
+
+.UploadDocUI{
+	width: 100%;
+	height: 100%;
+	background-color: #C1A9A9;
+	float: left;
+}
+
+.UploadDocFrame{
+	width: 94%;
+	height: 70%;
+	background-color: #26B5D7;
+	margin-top: 3%;
+	margin-left: 2%;
+	float: left;
+}
+
+.uploadListFrame{
+	width: 90%;
+	height: 50%;
+	background-color: white;
+	margin-top: 3%;
+	margin-left: 2%;
+	float: left;
+}
+
+.uploadList{
+	width: 100%;
+	height: 78%;
+	float: left;
+	background-color: #F5F5F5;
+}

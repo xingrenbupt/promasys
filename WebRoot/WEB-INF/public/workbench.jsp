@@ -29,6 +29,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <jsp:include page="head.jsp"></jsp:include>
     <jsp:include page="leftcontrol.jsp"></jsp:include>
     <div class="main_frame">
+    	<!-- 项目主页 -->
 	    <div class="frame1">
 	    	<div class="userInfoTable">
 	    		<div class="title"><label>用户信息</label></div>
@@ -40,27 +41,41 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	    				<td class="tablecontent">最后登录时间:${loginuser.loginDate}</td>
 	    			</tr>
 	    			<tr>
-	    				<td class="tablecontent">最后登录IP:</td>
+	    				<td class="tablecontent">最后登录IP:${loginAddress}</td>
 	    			</tr>
 	    		</table>
 	    	</div>
-	    	<div class="actorList">
+	    	<div class="staffList">
 	    		<div class="title"><label>课题人员名单</label></div>
-	    		<table frame="void" rules="rows" bordercolor="#B4D3EF">
+	    		<table width=400px; frame="void" rules="rows" bordercolor="#B4D3EF">
 	    			<tr>
-	    				<th>姓名</th>
-	    				<th>年级</th>
-	    				<th>邮箱</th>
+	    			<td  height=25px;>
+	    				<div style="width:100%;">
+		    				<table width=100% rules="rows" style="font-weight:bold" >
+			    				<tr style="text-align: center;">
+			    					<td width="100">姓名</td>
+			    					<td width="60">年级</td>
+			    					<td width="225">邮箱</td>
+			    					<td width="15">&nbsp;</td>
+			    				</tr>
+		    				</table>
+	    				</div>
+	    			</td>
 	    			</tr>
-	    			<tr style="text-align: center;">
-	    				<td>聂松</td>
-	    				<td>研二</td>
-	    				<td>niesong@bupt.edu.cn</td>
-	    			</tr>
-	    			<tr style="text-align: center;">
-	    				<td>somebody</td>
-	    				<td>any</td>
-	    				<td>somebody@bupt.edu.cn</td>
+	    			<tr>
+	    				<td>
+	    					<div style="overflow-y:auto; width:100%;height:93px">
+	    						<table width=100% rules="rows">
+					    			<c:forEach var="staff" items="${stafflist}" varStatus="vs">
+					    			<tr style="text-align: center;">
+					    				<td width="100" height=25px>${staff.name}</td>
+					    				<td width="70">${staff.level}</td>
+					    				<td width="233">${staff.email}</td>
+					    			</tr>
+					    			</c:forEach>
+				    			</table>
+			    			</div>
+		    			</td>
 	    			</tr>
 	    		</table>
 	    	</div>
@@ -75,141 +90,70 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	    			</tr>
 	    			<tr class="title1" style="text-align: center;">
 	    				<th>文件</th>
-	    				<td>1</td>
-	    				<td>1</td>
-	    				<td>1</td>
+	    				<td>${docNum}</td>
+	    				<td>${docNum}</td>
+	    				<td>${docNum}</td>
+	    			</tr>
+	    		</table>
+	    	</div>
+	    	<div class="meeting">
+	    		<div  class="title"><label>会议安排</label></div>
+	    		<table frame="void" rules="rows" bordercolor="#B4D3EF">	
+	    			<tr class="title1">
+	    				<td>主题</td>
+	    				<td>时间</td>
+	    				<td>地点</td>
+	    				<td>成员</td>
+	    			</tr>
+	    			<tr>
+	    				<td>${meeting.topic}</td>
+	    				<td>${meeting.time}</td>
+	    				<td>${meeting.site}</td>
+	    				<td>${meeting.staffs}</td>
 	    			</tr>
 	    		</table>
 	    	</div>
 	    </div>
 	    <div class="frame2">
-	    	<div class="timeShaft">
-	    		
-	    	</div>
-	    	<div class="documentList">
-	    		<table  border="1">
+	    	<div class="introduction">
+	    		<table frame="box" rules="all">
+	    			<tr style="height: 30px;">
+	    				<td style="width:500px;font-weight:bold;">课题介绍</td>
+	    				<td style="font-weight:bold;">课题进展</td>
+	    			</tr>
 	    			<tr>
-	    				<th></th>
+	    				<td>
+	    					<table style="width: 500px;" frame="void" rules="all">
+	    						<tr>
+	    							<td style="width:90px;height:200px;">课题名称:</td>
+	    							<td>
+	    								<span style="padding-left:3px;">模分复用系统中模式产生、转换与复用机制及控制</span><br/>
+	    								<img alt="principle" width=300px; height=150px; align="bottom"
+	    									src="/promasys/documents/1/jpg/principle.jpg">
+	    							</td>
+	    						</tr>
+	    						<tr>
+	    							<td style="width:90px;">课题内容:</td>
+	    							<td>
+	    								<ul style="list-style: none;padding-left:3px;">
+		    								<li>本课题研究目标包括：</li>
+											<li>1）建立一套表征模式转换过程中模式分布时空特征的模型，能够揭示光场各参数与模式控制机制的相互作用规律。</li>
+											<li>2）研制出用于少模光纤通信系统的模式激励、模式转换与模式复用/解复用模块，模式转换消光比达到15dB以上；可支持6个以上模式的复用/解复用。</li>
+											<li>3）研制出能够实现少模输出的少模DFB半导体激光器芯片。</li>
+											<li>4）掌握少模复用器件的耦合封装方法。</li>
+										</ul>
+									</td>
+	    						</tr>
+	    					</table>
+	    				</td>
+	    				<td style="text-align:top;">此处展示项目最新进展</td>
 	    			</tr>
 	    		</table>
 	    	</div>
-	    </div>
-	    <!-- 人员管理 -->
-	    <div class="crewManUI">
-	    	<div class="crewList">
-	    		<table width="100%" frame="box" rules="all" bordercolor="black">
-	    			<tr style="text-align: center">
-						<td style="width:15%">头像</td>
-	   					<td style="width:15%">姓名</td>
-	   					<td style="width:15%">职称</td>
-	   					<td style="width:20%">邮箱</td>
-	   					<td style="width:20%">手机</td>	   					
-	   				</tr>
-	   				<c:forEach var="crew" items="${crewlist}" varStatus="vs">
-	   				<tr style="text-align: center">
-	   					<td>
-	   						<img src="/promasys/documents/${crew.id }/jpg/${crew.photo}"
-	   						 width="50" height="50" />
-	   					</td>
-	   					<td>
-	   						<span>${crew.name}</span>
-	   					</td>
-	   					<td>
-	   						<span>${crew.level}</span>
-	   					</td>
-	   					<td>
-	   						<span>${crew.email}</span>
-	   					</td>
-	   					<td>
-	   						<span>${crew.mobile}</span>
-	   					</td>				
-	   				</tr>
-	   				</c:forEach>
-	    		</table>
-	    	</div>
-	    </div>
-	    <div class="UserHomeUI">
-	    	<div>
+	    	<div class="timeShaft" style="display:none;">
 	    		
-	    	</div>
+	    	</div>	    	
 	    </div>
-    	<div class="UserInfoUI">
-    		<form action="/promasys/uploadDoc.do?flag=uploadPhoto" method="post" enctype="multipart/form-data">
-    		<div class="UploadHeadFrame">
-    			<div style="background-color: #E7E7E7;">
-	    				<h style="font-size: 24px; font-weight: bold;line-height: 48px;">上传头像</h>
-	    		</div>
-    			<div style="background-color: #DFDFDF;width:100%">
-	    			<input type="file" name="myPhoto">
-	    		</div>
-	    		<div>
-	    			<input style="float: left;" type="submit" value="上传头像">
-	    		</div>
-    		</div>
-    		</form>
-    	</div>
-    	<div class="UploadDocUI">
-    		<form action="/promasys/uploadDoc.do?flag=uploadDoc" method="post" enctype="multipart/form-data">
-	    		<div class="UploadDocFrame">
-	    			<div style="background-color: #E7E7E7;">
-	    				<h style="font-size: 24px; font-weight: bold;line-height: 48px;">上传文件</h>
-	    			</div>
-	    			<div class="uploadListFrame">
-	    				<div style="font-size: 24px;background-color: #9F5C53;line-height: 24px; width:100%">上传文件列表</div>
-	    				<div class="uploadList">
-	    				
-	    				</div>
-	    				<br/>
-	    				<div style="background-color: #DFDFDF;width:100%">
-	    					<input type="file" name="docFile">
-	    				</div>
-	    			</div>
-	    			<br/>
-	    			<br/>
-	    			<ul style="float: left;">
-		    			<li>允许上传的文件扩展名： txt,rtf,pdf,doc,docx,xls,xlsx,zip,rar,jpg,jpeg,png,gif,ppt,pptx</li>
-		    			<li>允许上传的文件大小： 20 Mb</li>
-						<li>上传过程中请不要关闭当前窗口。 </li>
-						<br/>
-						<li>
-							<input style="float: left;" type="submit" value="上传文件">
-						</li>
-	    			</ul>	
-	    		</div>
-    		</form>
-    	</div>
-    	<div class="docManUI">
-    		<div class="docList">
-    			<table width="100%" frame="box" rules="all" bordercolor="black">
-    				<tr style="text-align: center">
-    					<td style="width:25%">文件名称</td>
-    					<td style="width:25%">上传用户</td>
-    					<td style="width:35%">上传时间</td>
-    					<td style="width:10%">下载次数</td>
-    					<td style="width:5%"></td>
-    				</tr>
-    				<c:forEach var="prodoc" items="${prodoclist}" varStatus="vs">
-    				<tr style="text-align: center">
-    					<td>
-    						<span>${prodoc.name}</span>
-    					</td>
-    					<td>
-    						<span>${prodoc.users.name}</span>
-    					</td>
-    					<td>
-    						<span>${prodoc.uploadDate}</span>
-    					</td>
-    					<td>
-    						<span>${prodoc.downloadTimes}</span>
-    					</td>	
-    					<td>
-    						<a href="<%=basePath%>documents/${prodoc.users.id}/${prodoc.type}/${prodoc.name}">下载</a>
-    					</td>			
-    				</tr>
-    				</c:forEach>
-    			</table>
-    		</div>
-    	</div>
     </div>
   </body>
 </html>
